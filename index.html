@@ -1,48 +1,52 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Florian A.</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f2f2f2;
-      }
-      h1 {
-        text-align: center;
-        margin-top: 50px;
-      }
-      ul {
-        list-style: none;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        margin-top: 30px;
-      }
-      li {
-        margin-right: 20px;
-      }
-      a {
-        display: inline-block;
-        padding: 10px;
-        background-color: #4CAF50;
-        color: white;
-        text-decoration: none;
-        border-radius: 5px;
-        font-weight: bold;
-        transition: background-color 0.3s ease;
-      }
-      a:hover {
-        background-color: #3e8e41;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Florian A.</h1>
-    <ul>
-      <li><a href="https://www.linkedin.com/in/florian-a-dev/">LinkedIn</a></li>
-      <li><a href="https://github.com/florian-a">GitHub</a></li>
-      <li><a href="https://booking.florian-a.dev">Prendre un rendez-vous</a></li>
-    </ul>
-  </body>
+<head>
+	<meta charset="utf-8">
+	<title>Florian A. - Portfolio</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<header>
+		<h1>Florian A.</h1>
+		<nav>
+			<ul>
+				<li><a href="https://www.linkedin.com/in/florian-a-dev/">LinkedIn</a></li>
+				<li><a href="https://booking.florian-a.dev">Prendre rendez-vous</a></li>
+				<li><a href="https://github.com/florian-a">GitHub</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section id="bio">
+			<h2>À propos de moi</h2>
+			<p>J'ai pas eu le temps de faire mon portfolio du coup j'ai demandé à ChatGPT de m'en faire un et ... voilà !</p>
+		</section>
+		<section id="projets">
+			<h2>Mes derniers projets</h2>
+			<ul>
+				<a class="project-link" href="https://github.com/Florian-A/So_Long">
+					<li>
+						<h3>So_long</h3>
+						<p>Jeu semblable à Mario Bros avec une vue de profil. Le but du joueur est de collecter toutes les pièces présentes sur la carte puis de s'échapper avec un minimum de mouvement.</p>
+					</li>
+				</a>
+				<a class="project-link" href="https://github.com/Florian-A/JSrassik">
+					<li>
+						<h3>JSrassik</h3>
+						<p>Clone de Flappy Bird avec les textures ainsi que de certaines mécaniques de Google T-rex-runner.</p>
+					</li>
+				</a>
+				<a class="project-link" href="https://github.com/Florian-A/Minishell">
+					<li>
+						<h3>Minishell</h3>
+						<p>shell Unix simplifié implémenté en langage C. Il permet d'exécuter des commandes de base telles que ls, cd et echo, ainsi que des commandes personnalisées définies par l'utilisateur.</p>
+					</li>
+				</a>
+			</ul>
+		</section>
+	</main>
+	<footer>
+		<p>&copy; 2023 Florian A.</p>
+	</footer>
+</body>
 </html>
