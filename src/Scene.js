@@ -1,59 +1,73 @@
-import React, { useRef } from "react";
-import { Canvas, useFrame, useThree } from "react-three-fiber";
-import * as THREE from "three";
+import React, { useRef, useEffect } from 'react';
+import * as THREE from 'three';
+import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { ObjectLoader } from 'three';
 
-const Cube = ({ position, onClick }) => {
-  const mesh = useRef();
+const App = () => {
+  const containerRef = useRef();
+  const jsonPath = './scene.json';
 
-  useFrame(() => {
-    if (mesh.current) {
-      mesh.current.rotation.x += 0.01;
-      mesh.current.rotation.y += 0.01;
-    }
-  });
+  useEffect(() => {
+    const container = containerRef.current;
 
-  return (
-    <mesh
-      ref={mesh}
-      position={position}
-      onClick={(e) => {
-        e.stopPropagation();
-        onClick(position);
-      }}
-    >
-      <boxBufferGeometry attach="geometry" />
-      <meshLambertMaterial attach="material" color="orange" />
-    </mesh>
-  );
-};
+    // Initialize scene, renderer and camera
+    const scene = new THREE.Scene();
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    let camera = null;
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    container.appendChild(renderer.domElement);
 
-const Scene = () => {
-  const { camera } = useThree();
+    // Load scene JSON
+    const loader = new ObjectLoader();
+    loader.load(jsonPath, (loadedScene) => {
+      scene.add(loadedScene);
 
-  const handleCubeClick = (position) => {
-    const target = new THREE.Vector3(...position);
-    target.z += 5;
-    camera.position.lerp(target, 0.5);
+      // Add a camera manually if needed
+      camera = new THREE.PerspectiveCamera(
+        75,
+        window.innerWidth / window.innerHeight,
+        0.1,
+        1000
+      );
+      camera.position.z = 5;
+      scene.add(camera);
+
+      // Inject custom scripts for each object
+      injectScripts(loadedScene.children);
+
+      // Initialize controls
+      const controls = new OrbitControls(camera, renderer.domElement);
+
+      // Start rendering the scene
+      animate();
+
+      function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+      }
+    });
+
+    // Handle window resize
+    const onWindowResize = () => {
+      if (!camera) return;
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+    window.addEventListener('resize', onWindowResize, false);
+
+    return () => {
+      window.removeEventListener('resize', onWindowResize, false);
+    };
+  }, [jsonPath]);
+
+  const injectScripts = (objects) => {
+    objects.forEach((object) => {
+    });
   };
 
-  return (
-    <>
-      <ambientLight />
-      <pointLight position={[10, 10, 10]} />
-      <Cube position={[-2, 0, 0]} onClick={handleCubeClick} />
-      <Cube position={[0, 0, 0]} onClick={handleCubeClick} />
-      <Cube position={[2, 0, 0]} onClick={handleCubeClick} />
-    </>
-  );
+  return <div ref={containerRef} />;
 };
-
-const App = () => (
-  <Canvas
-    camera={{ position: [0, 0, 5], fov: 75, near: 0.1, far: 1000 }}
-    style={{ height: "100vh", width: "100%" }}
-  >
-    <Scene />
-  </Canvas>
-);
 
 export default App;
