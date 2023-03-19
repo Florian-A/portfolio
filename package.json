@@ -2,7 +2,7 @@
   "name": "portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://florian-a.github.io/portfolio/",
+  "homepage": "https://florian-a.dev/",
   "dependencies": {
     "@react-three/fiber": "^8.12.0",
     "@testing-library/jest-dom": "^5.16.5",
