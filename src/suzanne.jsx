@@ -3,9 +3,8 @@ import { useGLTF } from "@react-three/drei";
 
 import suzanne from "./suzanne.gltf?url"
 
-
 export default function Suzanne(props) {
-  const { nodes, materials } = useGLTF(suzanne);
+  const { nodes } = useGLTF(suzanne);
   return (
     <group {...props} dispose={null}>
       <mesh
@@ -19,5 +18,3 @@ export default function Suzanne(props) {
     </group>
   );
 }
-
-// useGLTF.preload("./assets/models/suzanne.glb");
