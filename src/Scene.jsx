@@ -2,7 +2,9 @@ import { Canvas } from '@react-three/fiber'
 import { useEffect, Suspense } from 'react'
 import { Environment, ContactShadows, Grid, OrbitControls } from '@react-three/drei'
 import { EffectComposer, Bloom } from '@react-three/postprocessing'
+
 import Suzanne from './suzanne'
+import Margot from './margot'
 
 const canvasStyle = {
 	width: "100vw",
@@ -39,6 +41,7 @@ export default function Scene() {
 			<Suspense >
 				<Canvas dpr={[1, 2]} eventSource={document.getElementById('root')} style={canvasStyle} camera={{ position: [cameraOffset.x, cameraOffset.y, cameraOffset.z], fov: 20 }}>
 					<Suzanne />
+					<Margot />
 					<Grid renderOrder={-1} position={[0, -1, 0]} infiniteGrid cellSize={0.6} cellThickness={0.6} sectionSize={3.3} sectionThickness={1.5} sectionColor={[0.5, 0.5, 10]} fadeDistance={30} />
 					<OrbitControls autoRotate autoRotateSpeed={0.5} makeDefault minPolarAngle={Math.PI / 2} maxPolarAngle={Math.PI / 2} />
 					<EffectComposer disableNormalPass>

@@ -12,7 +12,7 @@ export default function Suzanne(props) {
         receiveShadow
         geometry={nodes.Suzanne.geometry}
         material={nodes.Suzanne.material}
-        position={[0, 0.19, -0.04]}
+        position={[0, 0.19, 1]}
         onClick={() => alert("test")}
       />
     </group>
