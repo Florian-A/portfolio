@@ -20,7 +20,7 @@ const cameraOffset = window.innerWidth > 600 ? {
 	z: 4
 }
 
-export default function Game3D() {
+export default function Scene() {
 
 	useEffect(() => {
 		var html = document.querySelector('html')

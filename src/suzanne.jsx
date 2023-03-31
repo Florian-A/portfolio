@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { useGLTF } from "@react-three/drei";
 
-import suzanne from "./suzanne.gltf?url"
+import suzanne from "./assets/models/suzanne.gltf?url"
 
 export default function Suzanne(props) {
   const { nodes } = useGLTF(suzanne);

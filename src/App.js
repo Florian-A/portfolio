@@ -1,8 +1,8 @@
 import React from "react";
-import Game3D from "./Game3D.jsx";
+import Scene from "./Scene.js";
 
 const App = () => (
-  <Game3D/>
+  <Scene />
 );
 
 export default App;
