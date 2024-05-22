@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./Scene";
+import App from "./Vivatech";
 
 ReactDOM.render(
   <React.StrictMode>
