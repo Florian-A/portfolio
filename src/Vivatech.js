@@ -10,9 +10,11 @@ const Vivatech = () => {
         <div className="background-video">
           <ReactPlayer
             url='./video.mp4'
-            playing
             loop
             muted
+            playing
+            playsinline
+            autoPlay
             className="video-player"
           />
         </div>
