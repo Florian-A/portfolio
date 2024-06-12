@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import App from "./Vivatech";
+import App from "./Rickroll";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css'; 
 
